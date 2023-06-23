@@ -1,18 +1,18 @@
 // let's select all required tags or elements
 
-const wrapper = document.querySelector('.wrapper');
-const musicImg = wrapper.querySelector('.img-area img');
-const musicName = wrapper.querySelector('.song-details .name');
-const musicArtist = wrapper.querySelector('.song-details .artist');
-const mainAudio = wrapper.querySelector('#main-audio');
-const playPauseBtn = wrapper.querySelector('.play-pause');
-const prevBtn = wrapper.querySelector('#prev');
-const nextBtn = wrapper.querySelector('#next');
-const progressArea = wrapper.querySelector('.progress-area');
-const progressBar = wrapper.querySelector('.progress-bar');
-const musicList = wrapper.querySelector('.music-list');
-const showMoreBtn = wrapper.querySelector('#more-music');
-const hideMusicBtn = wrapper.querySelector('#close');
+const wrapper = document.querySelector('.wrapper'),
+  musicImg = wrapper.querySelector('.img-area img'),
+  musicName = wrapper.querySelector('.song-details .name'),
+  musicArtist = wrapper.querySelector('.song-details .artist'),
+  mainAudio = wrapper.querySelector('#main-audio'),
+  playPauseBtn = wrapper.querySelector('.play-pause'),
+  prevBtn = wrapper.querySelector('#prev'),
+  nextBtn = wrapper.querySelector('#next'),
+  progressArea = wrapper.querySelector('.progress-area'),
+  progressBar = wrapper.querySelector('.progress-bar'),
+  musicList = wrapper.querySelector('.music-list'),
+  showMoreBtn = wrapper.querySelector('#more-music'),
+  hideMusicBtn = wrapper.querySelector('#close');
 
 // load random music on page refresh
 let musicIndex = Math.floor((Math.random() * allMusic.length) + 1);
@@ -160,7 +160,7 @@ mainAudio.addEventListener('ended', () => {
       break;
     case 'repeat_one': // if icon icon is repeat_one then we'll change the current playing song current time to 9 so song will play from beginning
       mainAudio.currentTime = 0;
-      loadMusic(indexNumb);
+      loadMusic(musicIndex)
       playMusic(); // calling playMusic function
       break;
     case 'shuffle': // if icon icon is shuffle then change it to repeat
@@ -190,7 +190,7 @@ const ulTag = wrapper.querySelector('ul');
 // let's create li according to the array length
 for (let i = 0; i < allMusic.length; i++) {
   // let's pass the song name, artist from the array to li
-  let liTag = ` <li li-index="${i + 1}>
+  let liTag = `<li li-index="${i + 1}>
                   <div class="row">
                     <span>${allMusic[i].name}</span>
                     <p>${allMusic[i].artist}</p>

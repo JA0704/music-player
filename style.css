@@ -30,6 +30,8 @@ body {
 }
 .wrapper {
   width: 380px;
+  overflow: hidden;
+  position: relative;
   border-radius: 15px;
   padding: 25px 30px;
   background: var(--white);
@@ -39,7 +41,10 @@ body {
   cursor: pointer;
 }
 .top-bar,
-.progress-area .timer .controls {
+.progress-area .timer,
+.controls,
+.music-list .header,
+.music-list li {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -81,7 +86,7 @@ body {
 .progress-area {
   height: 6px;
   width: 100%;
-  background-color: #f0f0f0;
+  background: #f0f0f0;
   border-radius: 50px;
   cursor: pointer;
 }
@@ -90,7 +95,7 @@ body {
   width: 50%;
   position: relative;
   border-radius: inherit;
-  background-color: linear-gradient(90deg, var(--pink) 0%, var(--violet) 100%);
+  background: linear-gradient(90deg, var(--pink) 0%, var(--violet) 100%);
 }
 .progress-bar::before {
   content: "";
@@ -106,7 +111,7 @@ body {
   opacity: 0;
   transition: opacity 0.2s ease;
 }
-.progress-bar::after .progress-bar::before {
+.progress-area:hover .progress-bar::before {
   opacity: 1;
 }
 .progress-area .timer {
@@ -118,4 +123,115 @@ body {
 }
 .controls {
   margin: 40px 0 5px 0;
+}
+.controls i {
+  font-size: 28px;
+  user-select: none;
+  background: linear-gradient(var(--pink) 0%, var(--violet) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.controls i:nth-child(2),
+.controls i:nth-child(4) {
+  font-size: 43px;
+}
+.controls #prev {
+  margin-right: -13px;
+}
+.controls #next {
+  margin-left: -13px;
+}
+.controls .play-pause {
+  height: 54px;
+  width: 54px;
+  background: linear-gradient(var(--white) 0%, var(--dark-white) 100%);
+  box-shadow: 0px 0px 5px var(--pink);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.play-pause::before {
+  content: "";
+  position: absolute;
+  height: 43px;
+  width: 43px;
+  border-radius: inherit;
+  background: linear-gradient(var(--pink) 0%, var(--violet) 100%);
+}
+.play-pause i {
+  height: 43px;
+  width: 43px;
+  line-height: 43px;
+  text-align: center;
+  border-radius: inherit;
+  background-clip: text;
+  background: inherit;
+  position: relative;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.music-list {
+  position: absolute;
+  left: 0;
+  bottom: -55%;
+  opacity: 0;
+  pointer-events: none;
+  width: 100%;
+  padding: 15px 3%;
+  border-radius: 15px;
+  background: var(--white);
+  box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.14s ease-out;
+}
+/* We'll use this show class in javascript */
+.music-list.show {
+  bottom: 0;
+  opacity: 1;
+  pointer-events: auto;
+}
+.music-list .header .row {
+  display: flex;
+  align-items: center;
+  font-size: 19px;
+  color: var(--light-black);
+}
+.music-list .header i {
+  cursor: pointer;
+}
+.header .row span {
+  margin-left: 5px;
+}
+.header #close {
+  font-size: 22px;
+  color: var(--light-black);
+}
+.music-list ul {
+  margin: 10px 0;
+  max-height: 260px;
+  overflow-y: auto;
+}
+.music-list ul::-webkit-scrollbar {
+  width: 0;
+}
+.music-list ul li {
+  cursor: pointer;
+  list-style: none;
+  padding-bottom: 10px;
+  margin-bottom: 5px;
+  color: var(--light-black);
+  border-bottom: 1px solid #e5e5e5;
+}
+.music-list ul li:last-child {
+  border-bottom: 0px;
+}
+.music-list ul li .row span {
+  font-size: 17px;
+}
+ul li .row p {
+  opacity: 0.9;
+}
+ul li .audio-duration {
+  font-size: 16px;
 }

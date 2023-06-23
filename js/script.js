@@ -68,7 +68,7 @@ function prevMusic() {
 
 // play or music button event
 playPauseBtn.addEventListener("click", () => {
-  const isMusicPaused = wrapper.classList.contains('pauses')
+  const isMusicPaused = wrapper.classList.contains('paused')
   // If isMusicPaused is true then call pauseMusic else call playMusic
   isMusicPaused ? pauseMusic() : playMusic();
   playingNow();
@@ -100,14 +100,14 @@ mainAudio.addEventListener('timeupdate', (e) => {
     let audioDuration = mainAudio.duration;
     let totalMin = Math.floor(audioDuration / 60);
     let totalSec = Math.floor(audioDuration % 60);
-    if (totalSec < 10) totalSec = `0${totalSec}` // adding 0 if sec is less than 10
+    if (totalSec < 10) totalSec = `0${totalMin}` // adding 0 if sec is less than 10
+
+    musicDuration.innerText = `${totalMin}:${totalSec}`;
 
   })
-  musicDuration.innerText = `${totalMin}:${totalSec}`;
-
   // update playning total duration
-  let currentMin = Math.floor(audioDuration / 60);
-  let currentSec = Math.floor(audioDuration % 60);
+  let currentMin = Math.floor(currentTime / 60);
+  let currentSec = Math.floor(currentTime % 60);
   if (currentSec < 10) currentSec = `0${currentSec}` // adding 0 if sec is less than 10
 
   musicCurrentTime.innerText = `${currentMin}:${currentSec}`;
@@ -194,8 +194,8 @@ for (let i = 0; i < allMusic.length; i++) {
                   <div class="row">
                     <span>${allMusic[i].name}</span>
                     <p>${allMusic[i].artist}</p>
-                  </div >
-                  <audio class="${allMusic[i].src}" src="mainAudio/${allMusic[i].src}.mp3"></audio>
+                  </div>
+                  <audio class="${allMusic[i].src}" src="songs/${allMusic[i].src}.mp3"></audio>
                   <span id="${allMusic[i].src}" class="audio-duration ">3:40</span>
                 </li > `;
   ulTag.insertAdjacentHTML('beforeend', liTag);
@@ -207,7 +207,7 @@ for (let i = 0; i < allMusic.length; i++) {
     let audioDuration = liAudioTag.duration;
     let totalMin = Math.floor(audioDuration / 60);
     let totalSec = Math.floor(audioDuration % 60);
-    if (totalSec < 10) totalSec = `0${totalSec}` // adding 0 if sec is less than 10
+    if (totalSec < 10) totalSec = `0${totalMin}` // adding 0 if sec is less than 10
     liAudioTagDuration.innerText = `${totalMin}:${totalSec}`;
     // adding t duration attribute which we'll use below
     liAudioTagDuration.setAttribute('t-duration', `${totalMin}:${totalSec}`);
@@ -215,7 +215,7 @@ for (let i = 0; i < allMusic.length; i++) {
 }
 
 // let's work on play particular song on click
-const allLiTags = ulTag.querySelector('li');
+const allLiTags = ulTag.querySelectorAll('li');
 function playingNow() {
   for (let j = 0; j < allLiTags.length; j++) {
     let audioTag = allLiTags[j].querySelector('.audio-duration')

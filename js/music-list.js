@@ -1,39 +1,33 @@
 let allMusic = [
   {
-    name: 'Harley Bird - Home',
-    artist: 'Jordon Schor',
+    name: '8d_sound]   Eminem',
+    artist: 'Eminem',
     img: 'music-1',
-    src: 'music-1'
+    src: '8d_sound]   Eminem',
   },
   {
-    name: 'Ikson Anywhere - Ikson',
-    artist: 'Audio Library',
+    name: 'Arizona Zervas - Roxanne (8D AUDIO)   8D Party',
+    artist: 'Arizona Zervas',
     img: 'music-2',
-    src: 'music-2'
+    src: 'Arizona Zervas - Roxanne (8D AUDIO)   8D Party',
   },
   {
-    name: 'Beauz & Jvna - Crazy',
-    artist: 'Beauz & Jvna',
+    name: 'Imagion dragins - Beliver 8D',
+    artist: 'Imagion dragins',
     img: 'music-3',
-    src: 'music-3'
+    src: 'Imagion dragins - Beliver 8D',
   },
   {
-    name: 'Hardwind - Want Me',
-    artist: 'Mike Archangelo',
+    name: 'Without Me 8D - @Party',
+    artist: '@Party',
     img: 'music-4',
-    src: 'music-4'
+    src: 'Without Me 8D - @Party',
   },
   {
-    name: 'Jim - Sun Goes Down',
-    artist: 'Jim Yosef x Roy',
+    name: 'Джаним',
+    artist: 'Джаним',
     img: 'music-5',
-    src: 'music-5'
-  },
-  {
-    name: 'Lost Sky - Vision NCS',
-    artist: 'NCS Release',
-    img: 'music-6',
-    src: 'music-6'
+    src: 'джаним _️',
   },
 
 ]

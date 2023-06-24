@@ -13,13 +13,14 @@
 }
 
 :root {
-  --pink: #ff74a4;
-  --violet: #9f6ea3;
+  --pink: #7489ff;
+  --violet: #4e3f50;
   --light-black: #515c6f;
   --white: #fff;
   --dark-white: #cecaca;
   --pink-shadow: #ffcbdd;
   --light-tb-shadow: rgba(0, 0, 0, 0.15);
+  --li-item: #0c13ee;
 }
 
 body {
@@ -27,6 +28,7 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  background: #e7e5e523;
 }
 .wrapper {
   width: 380px;
@@ -236,6 +238,6 @@ ul li .audio-duration {
   font-size: 16px;
 }
 ul li.playing {
-  color: var(--violet);
+  color: var(--li-item);
   pointer-events: none;
 }

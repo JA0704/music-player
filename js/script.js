@@ -190,17 +190,17 @@ const ulTag = wrapper.querySelector('ul');
 // let's create li according to the array length
 for (let i = 0; i < allMusic.length; i++) {
   // let's pass the song name, artist from the array to li
-  let liTag = `<li li-index="${i + 1}>
+  let liTag = `<li li-index="${i + 1}">
                   <div class="row">
                     <span>${allMusic[i].name}</span>
                     <p>${allMusic[i].artist}</p>
                   </div>
                   <audio class="${allMusic[i].src}" src="songs/${allMusic[i].src}.mp3"></audio>
-                  <span id="${allMusic[i].src}" class="audio-duration ">3:40</span>
-                </li > `;
+                  <span id="${allMusic[i].src}" class="audio-duration">3:40</span>
+                </li>`;
   ulTag.insertAdjacentHTML('beforeend', liTag);
 
-  let liAudioTagDuration = ulTag.querySelector(`#${allMusic[i].src}`)
+  let liAudioDuration = ulTag.querySelector(`#${allMusic[i].src}`)
   let liAudioTag = ulTag.querySelector(`.${allMusic[i].src}`)
 
   liAudioTag.addEventListener('loadeddata', () => {
@@ -208,35 +208,35 @@ for (let i = 0; i < allMusic.length; i++) {
     let totalMin = Math.floor(audioDuration / 60);
     let totalSec = Math.floor(audioDuration % 60);
     if (totalSec < 10) totalSec = `0${totalMin}` // adding 0 if sec is less than 10
-    liAudioTagDuration.innerText = `${totalMin}:${totalSec}`;
+    liAudioDuration.innerText = `${totalMin}:${totalSec}`;
     // adding t duration attribute which we'll use below
-    liAudioTagDuration.setAttribute('t-duration', `${totalMin}:${totalSec}`);
+    liAudioDuration.setAttribute('t-duration', `${totalMin}:${totalSec}`);
   })
 }
 
 // let's work on play particular song on click
-const allLiTags = ulTag.querySelectorAll('li');
+const allLiTags = ulTag.querySelectorAll("li");
 function playingNow() {
   for (let j = 0; j < allLiTags.length; j++) {
-    let audioTag = allLiTags[j].querySelector('.audio-duration')
+    let audioTag = allLiTags[j].querySelector('.audio-duration');
     // let's remove playing class from all other li expect the last one which is clicked
     if (allLiTags[j].classList.contains('playing')) {
-      allLiTags[j].classList.remove('playing')
+      allLiTags[j].classList.remove('playing');
       // let's get that audio duration value and pass to .audio-duration innerText
       let adDuration = audioTag.getAttribute('t-duration');
-      adDuration.innerText = adDuration; // passing t-duration value to audio duration innerText
+      audioTag.innerText = adDuration; // passing t-duration value to audio duration innerText
     }
 
     // if there is an li tag which li-index is equal to musicIndex
     // then this music is playing now and we'll style it
 
-    if (allLiTags[j].getAttribute('li-index') == musicIndex) {
+    if (allLiTags[j].getAttribute("li-index") == musicIndex) {
       allLiTags[j].classList.add('playing');
       audioTag.innerText = "Playing";
     }
 
     // adding onclick attribute in all li tags
-    allLiTags[j].setAttribute('onclick', 'clicked(this)')
+    allLiTags[j].setAttribute("onclick", "clicked(this)")
   }
 }
 

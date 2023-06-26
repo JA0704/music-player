@@ -8,8 +8,9 @@
 
 *::before,
 * ::after {
-  padding: 0;
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 :root {
@@ -17,18 +18,20 @@
   --violet: #4e3f50;
   --light-black: #515c6f;
   --white: #fff;
+  --wrapper-bg-color: #16083e;
   --dark-white: #cecaca;
   --pink-shadow: #ffcbdd;
   --light-tb-shadow: rgba(0, 0, 0, 0.15);
-  --li-item: #0c13ee;
+  --li-item: #0c2283;
 }
 
 body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   min-height: 100vh;
-  background: #e7e5e523;
+  background: #e7e5e5;
 }
 .wrapper {
   width: 380px;
@@ -36,7 +39,7 @@ body {
   position: relative;
   border-radius: 15px;
   padding: 25px 30px;
-  background: var(--white);
+  background: var(--wrapper-bg-color);
   box-shadow: 0px 6px 15px var(--light-tb-shadow);
 }
 .wrapper {
@@ -53,11 +56,11 @@ body {
 }
 .top-bar i {
   font-size: 30px;
-  color: var(--light-black);
+  color: var(--white);
 }
 .top-bar span {
   font-size: 18px;
-  color: var(--light-black);
+  color: var(--white);
 }
 .img-area {
   height: 256px;
@@ -76,7 +79,7 @@ body {
   text-align: center;
   margin: 10px 0;
   margin: 30px 0;
-  color: var(--light-black);
+  color: var(--white);
 }
 .song-details .name {
   font-size: 21px;
@@ -121,7 +124,7 @@ body {
 }
 .timer span {
   font-size: 13px;
-  color: var(--light-black);
+  color: var(--dark-white);
 }
 .controls {
   margin: 40px 0 5px 0;
@@ -183,9 +186,9 @@ body {
   width: 100%;
   padding: 15px 3%;
   border-radius: 15px;
-  background: var(--white);
   box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.14s ease-out;
+  background-size: cover;
 }
 .music-list.show {
   bottom: 0;
@@ -200,13 +203,15 @@ body {
 }
 .music-list .header i {
   cursor: pointer;
+  color: var(--dark-white);
 }
 .header .row span {
   margin-left: 5px;
+  color: var(--dark-white);
 }
 .header #close {
   font-size: 22px;
-  color: var(--light-black);
+  color: var(--dark-white);
 }
 .music-list ul {
   margin: 10px 0;
@@ -221,7 +226,7 @@ body {
   list-style: none;
   padding-bottom: 10px;
   margin-bottom: 5px;
-  color: var(--light-black);
+  color: var(--dark-white);
   border-bottom: 1px solid #e5e5e5;
 }
 .music-list ul li:last-child {
@@ -229,6 +234,7 @@ body {
 }
 .music-list ul li .row span {
   font-size: 17px;
+  font-weight: 600;
 }
 ul li .row p {
   opacity: 0.9;
@@ -238,5 +244,6 @@ ul li .audio-duration {
 }
 ul li.playing {
   color: var(--li-item);
-  pointer-events: none;
+  font-weight: 600;
+  pointer-events: fill;
 }

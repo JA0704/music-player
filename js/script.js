@@ -1,5 +1,3 @@
-// let's select all required tags or elements
-
 const wrapper = document.querySelector('.wrapper'),
   musicImg = wrapper.querySelector('.img-area img'),
   musicName = wrapper.querySelector('.song-details .name'),
@@ -12,7 +10,8 @@ const wrapper = document.querySelector('.wrapper'),
   progressBar = wrapper.querySelector('.progress-bar'),
   musicList = wrapper.querySelector('.music-list'),
   showMoreBtn = wrapper.querySelector('#more-music'),
-  hideMusicBtn = wrapper.querySelector('#close');
+  hideMusicBtn = wrapper.querySelector('#close'),
+  musicListBgImg = wrapper.querySelector('#music-list');
 
 let musicIndex = Math.floor((Math.random() * allMusic.length) + 1);
 
@@ -201,6 +200,11 @@ function playingNow() {
       allLiTags[j].classList.add('playing');
       audioTag.innerText = "Playing";
     }
+
+    function changeBgImg() {
+      musicListBgImg.style.backgroundImage = `url('../images/music-${musicIndex}.jpg')`;
+    }
+    changeBgImg();
 
     allLiTags[j].setAttribute("onclick", "clicked(this)")
   }
